@@ -37,7 +37,7 @@ const formSchema = z.object({
         .max(20, "Password must be at most 20 characters"),
 });
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -55,15 +55,16 @@ export const LoginForm = () => {
             <Card className="flex flex-col items-center justify-center text-center shadow-lg w-full bg-linear-to-b from-sky-200 via-sky-50 to-white">
                 <CardHeader className="flex flex-col items-center justify-center gap-3 w-full">
                     <CardTitle className="text-4xl font-bold tracking-tight flex flex-row items-top justify-center">
-                        Welcome back
+                        Get started today
                     </CardTitle>
                     <CardDescription className="text-gray-500 leading-relaxed w-5/8 text-base">
-                        Sign in to stay organized, focused, and productive.
+                        Set your goals, stay productive, and make every day
+                        count.
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="w-full flex flex-col items-center justify-center px-12">
                     <form
-                        id="login-form"
+                        id="register-form"
                         className="w-full flex flex-col gap-8"
                     >
                         <FieldGroup className="flex flex-col items-center justify-center gap-0">
@@ -75,7 +76,7 @@ export const LoginForm = () => {
                                         <FieldLabel>Email</FieldLabel>
                                         <Input
                                             {...field}
-                                            id="login-form-email"
+                                            id="register-form-email"
                                             aria-invalid={fieldState.invalid}
                                             placeholder="Email"
                                             autoComplete="on"
@@ -98,7 +99,7 @@ export const LoginForm = () => {
                                         <FieldLabel>Password</FieldLabel>
                                         <Input
                                             {...field}
-                                            id="login-form-password"
+                                            id="register-form-password"
                                             aria-invalid={fieldState.invalid}
                                             placeholder="Password"
                                             autoComplete="on"
@@ -112,14 +113,6 @@ export const LoginForm = () => {
                                     </Field>
                                 )}
                             />
-                            <div className="text-right w-full">
-                                <Link
-                                    to="/"
-                                    className="text-sm text-gray-500 hover:text-gray-700 hover:underline"
-                                >
-                                    Forgot your password?
-                                </Link>
-                            </div>
                         </FieldGroup>
                         <FieldGroup className="flex flex-row gap-4 w-full justify-center">
                             <Field className="flex-1">
@@ -127,13 +120,13 @@ export const LoginForm = () => {
                                     className="h-12 w-full bg-sky-400 hover:cursor-pointer hover:bg-sky-500"
                                     type="submit"
                                 >
-                                    Sign in
+                                    Sign up
                                 </Button>
                             </Field>
                             <Field className="flex-1">
-                                <Link to="/register">
+                                <Link to="/login">
                                     <Button className="h-12 w-full bg-sky-400 hover:cursor-pointer hover:bg-sky-500">
-                                        Create an account
+                                        Already have an account?
                                     </Button>
                                 </Link>
                             </Field>
@@ -141,7 +134,7 @@ export const LoginForm = () => {
                     </form>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-2">
-                    <p className="text-gray-500">Or sign up with</p>
+                    <p className="text-gray-500">Or sign in with</p>
                     <div className="flex flex-row gap-4 items-center justify-center">
                         <Button className="w-20 h-12 bg-gray-50 shadow-md flex items-center justify-center hover:cursor-pointer hover:bg-gray-300">
                             <FcGoogle className="w-16 h-16" />
@@ -156,4 +149,4 @@ export const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegisterForm;
